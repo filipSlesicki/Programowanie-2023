@@ -16,6 +16,10 @@ public class CameraFollow : MonoBehaviour
     // Kamerê ruszamy w LateUpdate
     void LateUpdate()
     {
+        if(player == null)
+        {
+            return;
+        }
         //Ustawiamy kamerê w podanej odleg³oœci od gracza
         transform.position = player.position - offset;
     }

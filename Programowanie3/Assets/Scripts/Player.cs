@@ -1,13 +1,21 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
-{    
+{
     // Komentarz
     // modyfikator dostêpu private/public
     public int count = 0;
-    public float moveSpeed = 5;
+    [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private int health = 3;
+    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private Image healthbar;
+    [SerializeField] UnityEvent OnSpacerEvent;
     private Rigidbody rb;
-    public int health = 3;
+
     //typ nazwa = wartoœæ pocz¹tkowa
     //float testFloat = 1f;  
 
@@ -16,6 +24,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Debug.Log(count);
+        UpdateHealthUI();
+
     }
 
     // Update is called once per frame
@@ -24,6 +34,11 @@ public class Player : MonoBehaviour
         //Vector3 moveDirection = GetMoveDirectionFromKeys();
         //Vector3 moveDirection = GetMoveDirectionFromAxes();
         //Move(moveDirection);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            OnSpacerEvent.Invoke();
+        }
+
     }
 
     private void FixedUpdate()
@@ -39,16 +54,38 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("HealthPack"))
+        {
+            Heal(1);
+            Destroy(other.gameObject);
+        }
     }
 
     public void TakeDamage()
     {
         health--;
-        if(health<=0)
+        UpdateHealthUI();
+        if (health <= 0)
         {
             Debug.Log("Dead");
+            Destroy(gameObject);
         }
+    }
+
+    public void Heal(int amount)
+    {
+        health += amount;
+        if(health >maxHealth)
+        {
+            health = maxHealth;
+        }
+        UpdateHealthUI();
+    }
+
+    void UpdateHealthUI()
+    {
+        healthText.text = $"Health {health}";
+        healthbar.fillAmount = (float)health / maxHealth;
     }
 
     Vector3 GetMoveDirectionFromKeys()
@@ -117,7 +154,7 @@ public class Player : MonoBehaviour
         {
             return true;
         }
-        else if(value < 0)
+        else if (value < 0)
         {
             return false;
         }
