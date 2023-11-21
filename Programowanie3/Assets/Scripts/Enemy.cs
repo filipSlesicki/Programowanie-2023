@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Player target;
+    [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private int damage = 1;
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,7 +29,7 @@ public class Enemy : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            player.TakeDamage();
+            player.TakeDamage(damage);
         }
     }
 }

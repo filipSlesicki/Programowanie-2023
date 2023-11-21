@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         //Vector3 moveDirection = GetMoveDirectionFromKeys();
         //Vector3 moveDirection = GetMoveDirectionFromAxes();
         //Move(moveDirection);
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             OnSpacerEvent.Invoke();
         }
@@ -61,9 +61,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int amount)
     {
-        health--;
+        health -= amount;
         UpdateHealthUI();
         if (health <= 0)
         {
@@ -72,10 +72,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void TakeDamagePercentage(float percentage)
+    {
+        float damge = health * percentage / 100;
+        TakeDamage(Mathf.RoundToInt(damge));
+    }
+
     public void Heal(int amount)
     {
         health += amount;
-        if(health >maxHealth)
+        if (health > maxHealth)
         {
             health = maxHealth;
         }
