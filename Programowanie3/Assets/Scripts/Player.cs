@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -13,7 +12,10 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private Image healthbar;
-    [SerializeField] UnityEvent OnSpacerEvent;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private float shootRate = 1;
+    private float shootTimer;
     private Rigidbody rb;
 
     //typ nazwa = wartoœæ pocz¹tkowa
@@ -23,22 +25,22 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Debug.Log(count);
         UpdateHealthUI();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Vector3 moveDirection = GetMoveDirectionFromKeys();
-        //Vector3 moveDirection = GetMoveDirectionFromAxes();
-        //Move(moveDirection);
-        if (Input.GetKeyDown(KeyCode.Space))
+        shootTimer -= Time.deltaTime;
+        if (Input.GetKey(KeyCode.Space))
         {
-            OnSpacerEvent.Invoke();
-        }
+            if (shootTimer <= 0)
+            {
+                Shoot();
+                shootTimer = shootRate;
+            }
 
+        }
     }
 
     private void FixedUpdate()
@@ -59,6 +61,11 @@ public class Player : MonoBehaviour
             Heal(1);
             Destroy(other.gameObject);
         }
+    }
+
+    void Shoot()
+    {
+        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
     }
 
     public void TakeDamage(int amount)

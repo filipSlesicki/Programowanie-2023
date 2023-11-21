@@ -6,20 +6,38 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] Transform spawnLocation;
-    // Start is called before the first frame update
+    [SerializeField] float spawnRate = 3;
+    private float timer;
+    //float nextSpawnTime;
+
     void Start()
     {
-        Spawn();
+        //InvokeRepeating("Spawn", 0, spawnRate);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if(Time.time >= nextSpawnTime)
+        //{
+        //    Spawn();
+        //    nextSpawnTime = Time.time + spawnRate;
+        //}
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            Spawn();
+            timer = spawnRate;
+        }
     }
     
     void Spawn()
     {
-        Instantiate(enemyPrefab, spawnLocation.position, spawnLocation.rotation);
+        Vector3 randomSpawnPosition = new Vector3(
+                                        Random.Range(-20f, 20f),
+                                        0,
+                                        Random.Range(-10f, 10f));
+
+        Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
     }
 }
