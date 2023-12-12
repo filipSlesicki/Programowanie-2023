@@ -10,7 +10,11 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player != null )
+        {
+            target = player.transform;
+        }
         movement = GetComponent<Movement>();
     }
 
@@ -22,6 +26,7 @@ public class Enemy : MonoBehaviour
             Vector3 moveDirection = target.transform.position - transform.position;
             moveDirection.Normalize();
             movement.MoveWithVelocity(moveDirection);
+
         }
     }
 
