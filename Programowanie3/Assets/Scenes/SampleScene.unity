@@ -172,7 +172,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6341321088336991749, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
   m_PrefabInstance: {fileID: 2970141464694396536}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1478725156}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ff926fe54ef9d54da8617f36ff1d83d, type: 3}
@@ -1062,6 +1062,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328223521}
   m_CullTransparentMesh: 1
+--- !u!1 &1478725156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7081750445234334376, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+  m_PrefabInstance: {fileID: 2970141464694396536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1478725157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478725156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0d21cfc19de4d418254a54b422d41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &1478725162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478725156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd23ad549bdba044b8dacb79a493951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  maxHealth: 5
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1478725164}
+        m_TargetAssemblyTypeName: HealthUI, Assembly-CSharp
+        m_MethodName: UpdateHealthUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1478725163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478725156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b650ab4ae216ab4291b1040889ad699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5428698339777496850, guid: ef6b50325e765494093034e333978872, type: 3}
+  shootPoint: {fileID: 1855654219}
+  shootRate: 0.3
+--- !u!114 &1478725164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478725156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c81701b38187f440b27c691a361527a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 1605840512}
+  healthbar: {fileID: 2111883774}
 --- !u!1 &1605840510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1408,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853972760}
   m_CullTransparentMesh: 1
+--- !u!4 &1855654219 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4267327498778614493, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+  m_PrefabInstance: {fileID: 2970141464694396536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889251768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1660,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7081750445234334376, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1478725157}
+    - targetCorrespondingSourceObject: {fileID: 7081750445234334376, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1478725163}
+    - targetCorrespondingSourceObject: {fileID: 7081750445234334376, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1478725162}
+    - targetCorrespondingSourceObject: {fileID: 7081750445234334376, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1478725164}
   m_SourcePrefab: {fileID: 100100000, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
 --- !u!1001 &4934103634071497844
 PrefabInstance:

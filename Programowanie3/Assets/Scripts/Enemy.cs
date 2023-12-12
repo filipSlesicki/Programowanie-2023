@@ -5,12 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField] private float moveSpeed = 5;
     [SerializeField] private int damage = 1;
+    Movement movement;
 
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        movement = GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -20,16 +21,19 @@ public class Enemy : MonoBehaviour
         {
             Vector3 moveDirection = target.transform.position - transform.position;
             moveDirection.Normalize();
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+            movement.MoveWithVelocity(moveDirection);
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player != null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.TakeDamage(damage);
+            Health playerHealth = other.gameObject.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
         }
     }
 }
