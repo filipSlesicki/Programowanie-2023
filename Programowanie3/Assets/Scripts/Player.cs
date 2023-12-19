@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     private Movement movement;
     private Shooting shooting;
 
+    [SerializeField] float rotationSpeed = 60;
+
     void Start()
     {
         movement = GetComponent<Movement>();
@@ -17,6 +19,20 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             shooting.Shoot();
+        }
+
+        Vector2 mousePosition = Input.mousePosition;
+        //Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+        Debug.DrawRay(mouseRay.origin, mouseRay.direction * 10, Color.red);
+
+        if( Physics.Raycast(mouseRay, out RaycastHit hit))
+        {
+            Vector3 lookAtPosition = hit.point;
+            lookAtPosition.y = transform.position.y;
+            Vector3 lookDirection = lookAtPosition - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
