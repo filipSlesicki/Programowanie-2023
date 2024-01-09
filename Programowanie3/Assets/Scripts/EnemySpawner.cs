@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] Transform spawnLocation;
     [SerializeField] float spawnRate = 3;
     private float timer;
@@ -38,6 +38,8 @@ public class EnemySpawner : MonoBehaviour
                                         0,
                                         Random.Range(-10f, 10f));
 
+        // Select random enemy
+        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
     }
 }
