@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] float rotationSpeed = 60;
 
-    public string someText = "Cos";
+    public string someText2 = "Cos";
+    public string someOtherText = "Cos";
     void Start()
     {
         movement = GetComponent<Movement>();
@@ -65,7 +66,7 @@ public class Player : MonoBehaviour
 
         if (moveDirection.magnitude > 1)
         {
-            // Normalize zachowuje kierunek i ustawia d³ugoœæ wektora na 1
+            // Normalize zachowuje kierunek i ustawia dÂ³ugoÅ“Ã¦ wektora na 1
             moveDirection.Normalize();
         }
         return moveDirection;
