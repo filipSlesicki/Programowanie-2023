@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] float rotationSpeed = 60;
 
-    public string someText2 = "Cos";
-    public string someOtherText = "Cos";
+    public string someText2 = "Cos22222";
+    public string someOtherText = "Cos1111";
+
+    public float someFloat = 2f;
     void Start()
     {
         movement = GetComponent<Movement>();
