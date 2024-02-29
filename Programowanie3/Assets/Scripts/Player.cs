@@ -20,9 +20,29 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetMouseButton(0))
         {
             shooting.Shoot();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            shooting.ChangeWeapon(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            shooting.ChangeWeapon(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            shooting.ChangeWeapon(2);
+        }
+
+        if(Input.mouseScrollDelta.y > 0)
+        {
+            shooting.NextWeapon();
         }
 
         Vector2 mousePosition = Input.mousePosition;

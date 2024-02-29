@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 5;
-    [SerializeField] private float lifetime = 5;
-    [SerializeField] private int damage = 1;
-    // Start is called before the first frame update
-    void Start()
+    private int damage = 1;
+    [SerializeField] private UnityEvent onHit;
+
+    public void Launch(float speed, float range, int damage)
     {
+        this.damage = damage;
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
+        float lifetime = range / speed;
         Destroy(gameObject, lifetime);
     }
 
@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         {
             health.TakeDamage(damage);
         }
-
+        onHit?.Invoke();
         Destroy(gameObject);
     }
 }

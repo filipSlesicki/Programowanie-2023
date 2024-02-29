@@ -20,13 +20,13 @@ public class Examples : MonoBehaviour
 
 
         int sum = 0;
-        for(int i = 0; i < 5 ; i++)
+        for (int i = 0; i < 5; i++)
         {
             Debug.Log(i);
             sum += i;
         }
 
-        for(int i = 0;i < enemies.Length;i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
             Debug.Log(enemies[i].gameObject.name);
         }
@@ -77,7 +77,7 @@ public class Examples : MonoBehaviour
             quotient = 0;
             return false;
         }
-        
+
         reminder = value % devisor;
         quotient = value / devisor;
         return true;
