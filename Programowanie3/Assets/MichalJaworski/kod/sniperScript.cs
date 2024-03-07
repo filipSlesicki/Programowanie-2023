@@ -17,6 +17,7 @@ public class sniperScript : MonoBehaviour
     [SerializeField] float fireRange = 20f;
     private float fireTimer = 0f;
     private float reloadTimer = 0f;
+    [SerializeField] private bool isReloading;
 
 
     [Header("Wybuch")]
@@ -35,7 +36,7 @@ public class sniperScript : MonoBehaviour
 
         if (currentAmmo > 0 && fireTimer >= 1f / rateOfFire)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !isReloading)
             {
                 sniperShoot();
                 fireTimer = 0f;
@@ -55,6 +56,7 @@ public class sniperScript : MonoBehaviour
         {
             reloadTimer = 0f;
             StartCoroutine(waitForReload());
+            isReloading = true;
         }
     }
 
@@ -77,6 +79,7 @@ public class sniperScript : MonoBehaviour
     void reload()
     {
         currentAmmo = maxAmmo;
+        isReloading = false;
     }
 
     void explode(Vector3 explosionPosition)
