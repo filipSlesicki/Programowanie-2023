@@ -5,11 +5,20 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5;
+    private float startingSpeed;
+    private float temp = 0;
     private Rigidbody rb;
+    [SerializeField] private float resetTime = 5;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startingSpeed = moveSpeed;
+    }
+
+    public void Return()
+    {
+         moveSpeed = startingSpeed;
     }
 
     public void Move(Vector3 moveDirection)
@@ -27,5 +36,12 @@ public class Movement : MonoBehaviour
     public void MoveWithVelocity(Vector3 moveDirection)
     {
         rb.velocity = moveDirection * moveSpeed;
+    }
+
+    public void TempMovementSpeed()
+    {
+        moveSpeed = temp;
+        Debug.Log("zero");
+        Invoke("Return", resetTime);
     }
 }
