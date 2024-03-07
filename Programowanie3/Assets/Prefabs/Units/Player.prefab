@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 8654026282742719825}
+  - {fileID: 7849746471975807603}
   - {fileID: 6253899520480360023}
   - {fileID: 1089878953964051811}
 --- !u!114 &1764183989864910362
@@ -495,7 +495,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 278580888320185446, guid: 745c968e9e140e44b835b2831eab22b1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -505,9 +506,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2810355398567964935, guid: 745c968e9e140e44b835b2831eab22b1, type: 3}
   m_PrefabInstance: {fileID: 8918517981501174071}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8654026282742719825 stripped
+--- !u!114 &7849746471975807603 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 278580888320185446, guid: 745c968e9e140e44b835b2831eab22b1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1669452317007665988, guid: 745c968e9e140e44b835b2831eab22b1, type: 3}
   m_PrefabInstance: {fileID: 8918517981501174071}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
