@@ -1897,6 +1897,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4487685918407534602, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: m_Name
+      value: Shotgun
+      objectReference: {fileID: 0}
     - target: {fileID: 4504134675658832535, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
       propertyPath: healthbar
       value: 

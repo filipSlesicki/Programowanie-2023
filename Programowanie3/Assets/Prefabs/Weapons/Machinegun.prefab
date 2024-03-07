@@ -128,6 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30070e97c804ba24284833580d515940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5428698339777496850, guid: ef6b50325e765494093034e333978872, type: 3}
+  shootType: 0
+  bulletPrefab: {fileID: 7703350145196281104, guid: 088c0e6cd00e3bb49b496058d9365244, type: 3}
   shootPoint: {fileID: 4708734453077886001}
-  shootRate: 1
+  timeBetweenShots: 2
+  damage: 5
+  range: 30
+  bulletsSpeed: 20
+  numberOfBullets: 5
+  spreadAngle: 10

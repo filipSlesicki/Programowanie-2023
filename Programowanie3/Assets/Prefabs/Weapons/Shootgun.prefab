@@ -134,6 +134,6 @@ MonoBehaviour:
   timeBetweenShots: 1
   damage: 1
   range: 10
-  bulletsSpeed: 1
+  bulletsSpeed: 7
   numberOfBullets: 5
-  spreadAngle: 10
+  spreadAngle: 30
