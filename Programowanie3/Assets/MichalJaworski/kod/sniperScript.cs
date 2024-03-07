@@ -86,16 +86,13 @@ public class sniperScript : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius, enemyMask);
 
-        Debug.Log("Number of colliders in explosion radius: " + colliders.Length);
-
         foreach (Collider hitCollider in colliders)
         {
             Health enemyHealth = hitCollider.GetComponent<Health>();
             if (enemyHealth != null)
             {
-                // Apply damage to the enemy
                 enemyHealth.TakeDamage(explosionDamage);
-                Debug.Log("Applied damage to an enemy!");
+
             }
         }
 
