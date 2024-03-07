@@ -322,6 +322,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3820751980668792352}
     m_Modifications:
+    - target: {fileID: 178201990439599037, guid: fa51e383d5bb42a4e8155c151e68fa58, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 178201990439599037, guid: fa51e383d5bb42a4e8155c151e68fa58, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3036095111074874582, guid: ef6b50325e765494093034e333978872, type: 3}
+    - target: {fileID: 178201990439599037, guid: fa51e383d5bb42a4e8155c151e68fa58, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2784576195719356124, guid: fa51e383d5bb42a4e8155c151e68fa58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -457,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008994867053566269, guid: 745c968e9e140e44b835b2831eab22b1, type: 3}
       propertyPath: m_Name
-      value: Gun
+      value: Shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 278580888320185446, guid: 745c968e9e140e44b835b2831eab22b1, type: 3}

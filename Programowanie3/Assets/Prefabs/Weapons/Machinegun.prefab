@@ -135,5 +135,5 @@ MonoBehaviour:
   damage: 5
   range: 30
   bulletsSpeed: 20
-  numberOfBullets: 5
-  spreadAngle: 10
+  numberOfBullets: 1
+  spreadAngle: 0

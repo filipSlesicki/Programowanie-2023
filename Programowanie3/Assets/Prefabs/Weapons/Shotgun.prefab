@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 815190391814462488}
   - component: {fileID: 1669452317007665988}
   m_Layer: 0
-  m_Name: Shootgun
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,4 +136,4 @@ MonoBehaviour:
   range: 10
   bulletsSpeed: 7
   numberOfBullets: 5
-  spreadAngle: 30
+  spreadAngle: 20
