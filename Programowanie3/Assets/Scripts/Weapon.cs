@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] ShootType shootType;
-    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float timeBetweenShots = 1;
     [SerializeField] private int damage = 1;
@@ -25,8 +25,16 @@ public class Weapon : MonoBehaviour
             switch (shootType)
             {
                 case ShootType.Bullet:
-                    Bullet shotBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-                    shotBullet.Launch(bulletsSpeed, range, damage);
+                    GameObject shotBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+                    if (shotBullet.TryGetComponent<projectile>(out var projectile))
+                    {
+                        projectile.Launch(bulletsSpeed, range, damage);
+                    }
+                    else
+                    {
+                        Debug.LogError("Wrong projectile!");
+                    }
+
                     shootTimer = timeBetweenShots;
                     break;
                 case ShootType.Ray:

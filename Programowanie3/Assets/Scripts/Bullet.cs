@@ -1,17 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, projectile
 {
     private int damage = 1;
     [SerializeField] private UnityEvent onHit;
 
-    public void Launch(float speed, float range, int damage)
+    public void Launch(float _speed, float _range, float _dmg)
     {
-        this.damage = damage;
+        this.damage = (int)_dmg;
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
-        float lifetime = range / speed;
+        rb.velocity = transform.forward * _speed;
+        float lifetime = _range / _speed;
         Destroy(gameObject, lifetime);
     }
 
