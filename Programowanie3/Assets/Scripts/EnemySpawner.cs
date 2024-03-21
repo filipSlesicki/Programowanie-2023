@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] Transform spawnLocation;
-    [SerializeField] float spawnRate = 3;
+    //Lista fal przeciwników
+    [SerializeField] private EnemyWave[] waves;
+    [SerializeField] float spawnRate = 30;
     private float timer;
+    private int currentWave = 0;
     //float nextSpawnTime;
 
     void Start()
@@ -30,16 +31,24 @@ public class EnemySpawner : MonoBehaviour
             timer = spawnRate;
         }
     }
-    
+
     void Spawn()
     {
-        Vector3 randomSpawnPosition = new Vector3(
-                                        Random.Range(-20f, 20f),
-                                        0,
-                                        Random.Range(-10f, 10f));
+        if (currentWave >= waves.Length)
+        {
+            Debug.Log("No more waves");
+            return;
+        }
+        //Stwóz nastêpn¹ falê
+        EnemyWave wave = waves[currentWave];
+        for (int i = 0; i<  wave.SpawnCount; i++)
+        {
+            Vector3 randomSpawnPosition = new Vector3(Random.Range(-20f, 20f),0,Random.Range(-10f, 10f));
 
-        // Select random enemy
-        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-        Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
+            // Select random enemy
+            Enemy enemyPrefab = wave.PossibleEnemies[Random.Range(0, wave.PossibleEnemies.Length)];
+            Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
+        }
+        currentWave++;
     }
 }

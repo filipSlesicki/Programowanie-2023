@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &327636049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,11 +149,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b971064cc8f33444389aae366738c85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4329977454124106848, guid: 6d7fb8a91683b544b96ee190748bed40, type: 3}
-  - {fileID: 5059171283032237292, guid: a64907114296e1647a2fcb3a62cd083e, type: 3}
-  spawnLocation: {fileID: 327636050}
-  spawnRate: 3
+  waves:
+  - PossibleEnemies:
+    - {fileID: 9113420519828579043, guid: 6d7fb8a91683b544b96ee190748bed40, type: 3}
+    SpawnCount: 3
+  - PossibleEnemies:
+    - {fileID: 9113420519828579043, guid: 6d7fb8a91683b544b96ee190748bed40, type: 3}
+    - {fileID: 314052793501057647, guid: a64907114296e1647a2fcb3a62cd083e, type: 3}
+    SpawnCount: 5
+  - PossibleEnemies:
+    - {fileID: 314052793501057647, guid: a64907114296e1647a2fcb3a62cd083e, type: 3}
+    SpawnCount: 10
+  spawnRate: 5
 --- !u!4 &327636050
 Transform:
   m_ObjectHideFlags: 0
