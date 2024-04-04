@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnRate = 30;
     private float timer;
     private int currentWave = 0;
-    public static EnemySpawner Instance;
+    public static EnemySpawner Instance; // Singleton
     //float nextSpawnTime;
 
     private void Awake()
@@ -43,7 +43,6 @@ public class EnemySpawner : MonoBehaviour
         if (timer <= 0)
         {
             Spawn();
-            timer = spawnRate;
         }
     }
 
@@ -54,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("No more waves");
             return;
         }
+        timer = spawnRate;
         //Stwóz nastêpn¹ falê
         EnemyWave wave = waves[currentWave];
         for (int i = 0; i<  wave.SpawnCount; i++)
