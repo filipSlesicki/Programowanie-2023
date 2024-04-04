@@ -8,8 +8,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int damage = 1;
     Movement movement;
 
+    public static int EnemyCount;
+
     private void Start()
     {
+        EnemyCount++;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player != null )
         {
@@ -40,5 +43,10 @@ public class Enemy : MonoBehaviour
                 playerHealth.TakeDamage(damage);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        EnemyCount--;
     }
 }

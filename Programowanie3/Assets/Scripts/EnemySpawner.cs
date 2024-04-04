@@ -9,7 +9,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnRate = 30;
     private float timer;
     private int currentWave = 0;
+    public static EnemySpawner Instance;
     //float nextSpawnTime;
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Start()
     {
@@ -19,6 +30,10 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Enemy.EnemyCount == 0)
+        {
+            Spawn();
+        }
         //if(Time.time >= nextSpawnTime)
         //{
         //    Spawn();

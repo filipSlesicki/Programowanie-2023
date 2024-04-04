@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 [Serializable]
-public class ShopItem
+public struct ShopItemStruct
 {
     public string DisplayName;
     public int Price;
     public Sprite Icon;
 
-    public static int MaxPrice = 20000;
-
-    public ShopItem(string name, int price)
+    public ShopItemStruct(string name, int price)
     {
         DisplayName = name;
         Price = price;
