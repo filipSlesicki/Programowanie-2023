@@ -28,16 +28,20 @@ public class Shooting : MonoBehaviour
         CurrentWeapon().gameObject.SetActive(true);
     }
 
-    public void NextWeapon()
+    public void ChangeToNextWeapon()
     {
-        //int nextWeaponIndex = currentWeaponIndex + 1;
-        //if(nextWeaponIndex >= weapons.Length)
-        //{
-        //    nextWeaponIndex = 0;
-        //}
         int nextWeaponIndex = (currentWeaponIndex + 1) % weapons.Count;
-
         ChangeWeapon(nextWeaponIndex);
+    }
+
+    public void ChangeToPreviousWeapon()
+    {
+        int previousWeaponIndex = (currentWeaponIndex - 1);
+        if(previousWeaponIndex <0)
+        {
+            previousWeaponIndex = weapons.Count - 1;
+        }
+        ChangeWeapon(previousWeaponIndex);
     }
 
 

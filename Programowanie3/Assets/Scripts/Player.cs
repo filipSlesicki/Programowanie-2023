@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float someFloat = 2f;
     void Start()
     {
+        // Zapisujemy komponenty na tym obiekcie
         movement = GetComponent<Movement>();
         shooting = GetComponent<Shooting>();
     }
@@ -42,22 +43,16 @@ public class Player : MonoBehaviour
 
         if(Input.mouseScrollDelta.y > 0)
         {
-            shooting.NextWeapon();
+            shooting.ChangeToNextWeapon();
         }
 
-        Vector2 mousePosition = Input.mousePosition;
-        //Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
-        Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
-        Debug.DrawRay(mouseRay.origin, mouseRay.direction * 10, Color.red);
-
-        if( Physics.Raycast(mouseRay, out RaycastHit hit))
+        if (Input.mouseScrollDelta.y < 0)
         {
-            Vector3 lookAtPosition = hit.point;
-            lookAtPosition.y = transform.position.y;
-            Vector3 lookDirection = lookAtPosition - transform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            shooting.ChangeToPreviousWeapon();
         }
+
+        LookAtMouse();
+
     }
 
     private void FixedUpdate()
@@ -101,5 +96,21 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
         moveDirection = Vector3.ClampMagnitude(moveDirection, 1);
         return moveDirection;
+    }
+
+    private void LookAtMouse()
+    {
+        Vector2 mousePosition = Input.mousePosition;
+        Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+        Debug.DrawRay(mouseRay.origin, mouseRay.direction * 10, Color.red);
+
+        if (Physics.Raycast(mouseRay, out RaycastHit hit))
+        {
+            Vector3 lookAtPosition = hit.point;
+            lookAtPosition.y = transform.position.y;
+            Vector3 lookDirection = lookAtPosition - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }
