@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SpeedModifierOnTouch : MonoBehaviour
 {
-    public float duration;
-    public SpeedChangeEffect effect;
+    [SerializeField] private SpeedChangeEffect effect;
+    [SerializeField] private float duration;
 
     private void OnTriggerEnter(Collider other)
     {
