@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0d21cfc19de4d418254a54b422d41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  startingMoveSpeed: 5
 --- !u!114 &5576069258598850294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd23ad549bdba044b8dacb79a493951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 5
+  health: 20
+  maxHealth: 20
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:

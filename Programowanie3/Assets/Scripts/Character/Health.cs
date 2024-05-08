@@ -1,24 +1,23 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int health = 3;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] UnityEvent<int, int> OnHealthChanged;
+    private int currentHealth;
 
     private void Start()
     {
-        OnHealthChanged?.Invoke(health,maxHealth);
+        currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(currentHealth,maxHealth);
     }
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
-        OnHealthChanged?.Invoke(health, maxHealth);
-        if (health <= 0)
+        currentHealth -= amount;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        if (currentHealth <= 0)
         {
             Debug.Log("Dead");
             Destroy(gameObject);
@@ -27,18 +26,18 @@ public class Health : MonoBehaviour
 
     public void TakeDamagePercentage(float percentage)
     {
-        float damge = health * percentage / 100;
+        float damge = currentHealth * percentage / 100;
         TakeDamage(Mathf.RoundToInt(damge));
     }
 
     public void Heal(int amount)
     {
-        health += amount;
-        if (health > maxHealth)
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
         {
-            health = maxHealth;
+            currentHealth = maxHealth;
         }
-        OnHealthChanged?.Invoke(health, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
 
