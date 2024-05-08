@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 716967198}
   - component: {fileID: 716967197}
   - component: {fileID: 716967196}
-  - component: {fileID: 716967195}
+  - component: {fileID: 716967200}
   m_Layer: 0
   m_Name: DoTTriggerg
   m_TagString: Untagged
@@ -747,20 +747,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &716967195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716967194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 674332fb8e4594c42baacdef1bb702b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dotEffect: {fileID: 11400000, guid: 52d70cfcfd7d0334ba1e4f1fcf869332, type: 2}
-  elapsedTime: 10
 --- !u!65 &716967196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -847,6 +833,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &716967200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716967194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47fe34c436bce94e9b226293fff562a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotEffect: {fileID: 11400000, guid: 52d70cfcfd7d0334ba1e4f1fcf869332, type: 2}
 --- !u!1 &787354208
 GameObject:
   m_ObjectHideFlags: 0
