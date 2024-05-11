@@ -5,8 +5,9 @@ public class DamageOverTime : MonoBehaviour
     [SerializeField] private DamageOverTimeEffect dotEffect;
     [SerializeField] private float elapsedTime;
 
-    public void Initialize()
+    public void Initialize(DamageOverTimeEffect effect)
     {
+        dotEffect = effect;
         elapsedTime = 0f;
         InvokeRepeating("ApplyDoT", 0f, dotEffect.tickInterval);
     }
