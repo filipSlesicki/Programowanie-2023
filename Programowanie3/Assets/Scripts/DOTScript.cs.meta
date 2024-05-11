@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 1829a9c814f26334b92aaaa17bca966e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - doteffect: {fileID: 11400000, guid: 34dcf7a082f7a2f4dbc12c6cedb6162c, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
