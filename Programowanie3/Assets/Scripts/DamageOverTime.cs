@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class DamageOverTime : MonoBehaviour
 {
-    [SerializeField]private DamageOverTimeEffect dotEffect;
+    [SerializeField] private DamageOverTimeEffect dotEffect;
     [SerializeField] private float elapsedTime;
 
-    public void Initialize(DamageOverTimeEffect effect)
+    public void Initialize()
     {
-        dotEffect = effect;
         elapsedTime = 0f;
         InvokeRepeating("ApplyDoT", 0f, dotEffect.tickInterval);
     }
