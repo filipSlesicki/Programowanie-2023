@@ -5,9 +5,9 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 5;
     [SerializeField] UnityEvent<int, int> OnHealthChanged;
-    private int currentHealth;
+    [HideInInspector] public int currentHealth;
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth,maxHealth);
