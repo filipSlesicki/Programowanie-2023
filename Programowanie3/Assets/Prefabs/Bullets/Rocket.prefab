@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4655486168306570647}
   - component: {fileID: 4826237615154716808}
   - component: {fileID: 6004369193952026753}
+  - component: {fileID: -8988647359908128339}
   m_Layer: 7
   m_Name: Rocket
   m_TagString: Bullet
@@ -99,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811ee9ed0a2116340be91ed4cc8c07b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroySelfOnHit: 1
+  alwaysMoveForward: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -178,4 +181,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 2646559955620279680, guid: 800fabe4eec42584fa2a7fe902a41e56, type: 3}
   range: 2.25
-  damage: 1
+  damage: 10
+  timeToDestroyExplosion: 1
+  destroySelf: 1
+--- !u!114 &-8988647359908128339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251903999017544197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1592431334d24904ca7d75854ca0df93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 90

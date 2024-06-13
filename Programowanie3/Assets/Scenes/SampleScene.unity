@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &327636049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +739,8 @@ GameObject:
   - component: {fileID: 787354212}
   - component: {fileID: 787354211}
   - component: {fileID: 787354210}
-  - component: {fileID: 787354209}
+  - component: {fileID: 787354215}
+  - component: {fileID: 787354214}
   m_Layer: 0
   m_Name: SpeedModifier
   m_TagString: Untagged
@@ -747,20 +748,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &787354209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787354208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53eb15c992efbb444ba16f2312f0f4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effect: {fileID: 11400000, guid: 66c5912a879527b48b10a0d33077a673, type: 2}
-  duration: 2
 --- !u!65 &787354210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -847,6 +834,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787354214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787354208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddbdeca92516e4408e124809650a395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotEffect: {fileID: 11400000, guid: de614d02859c3164882a98ccc31c2f03, type: 2}
+  dotEffectDuration: 5
+  speedChangeEffect: {fileID: 11400000, guid: f5d11647f5cbc724fb3c19157a891ae6, type: 2}
+  speedEffectDuration: 3
+--- !u!114 &787354215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787354208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d109ae08c62024fafcfb9c52469a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 787354214}
+        m_TargetAssemblyTypeName: EffectAplicator, Assembly-CSharp
+        m_MethodName: ApplyEffect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +964,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.43303668, y: -0, z: -0, w: 0.90137625}
-  m_LocalPosition: {x: 1.14, y: 10.26, z: -10.46}
+  m_LocalPosition: {x: 1.14, y: 10.93, z: -13.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -953,6 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 391789960}
+  offset: {x: 0, y: -10.33, z: 4.7800007}
 --- !u!1 &989966480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2171,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  currentHealth: 0
 --- !u!1 &2111883772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2255,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089878953964051811, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: shootType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3820751980668792352, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.86
@@ -2233,7 +2269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3820751980668792352, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.52
+      value: -8.49
       objectReference: {fileID: 0}
     - target: {fileID: 3820751980668792352, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2276,9 +2312,45 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
-      propertyPath: bulletPrefab
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: spread
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: shootType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: shootCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: raycastSettings.RayEndPoisitionEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: raycastSettings.RayEndPoisitionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3036095111074874582, guid: 51581e199737b8346b9592ed5c988f96, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: raycastSettings.RayEndPoisitionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: raycastSettings.RayEndPoisitionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DrawLineToPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: raycastSettings.RayEndPoisitionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LineSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654026282742719825, guid: e6f1d02339e5b8f4f90343485ccf9ff8, type: 3}
+      propertyPath: raycastSettings.RayEndPoisitionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -44,11 +44,14 @@ public class Shooting : MonoBehaviour
         ChangeWeapon(previousWeaponIndex);
     }
 
-
-    public void Shoot()
+    public void StartShooting()
     {
-        //Shoot current weapon
-       CurrentWeapon().Shoot();
+        CurrentWeapon().StartShooting();
+    }
+
+    public void StopShooting()
+    {
+        CurrentWeapon().StopShooting();
     }
 
     private Weapon CurrentWeapon()

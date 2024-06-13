@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     /// W s³owniku nie mo¿e byæ 2 takich samych kluczy (pierwsza wartoœæ)
     /// U¿ywamy s³ownika ¿eby sprawdziæ czy ju¿ na³o¿yliœmy dany efekt
     /// </summary>
-    private Dictionary<SpeedChangeEffect, TemporaryModifier> temporarySpeedModifiers = new Dictionary<SpeedChangeEffect, TemporaryModifier>();
+    private Dictionary<SpeedChangeEffect, EffectTimer> temporarySpeedModifiers = new Dictionary<SpeedChangeEffect, EffectTimer>();
 
     /// <summary>
     /// Lista efektów do usuniêcia. Jest tworzona raz i czyszczona co klatkê w celach optymalizacyjnych
@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
         else
         {
             // Je¿eli nie, to dodajemy go i tworzymy TemporaryModifier, który bêdzie odlicza³ czas
-            temporarySpeedModifiers.Add(effect, new TemporaryModifier(effect.Multiplier,duration));
+            temporarySpeedModifiers.Add(effect, new EffectTimer(duration));
             // Kiedy nak³adamy efekt, modyfikujemy prêdkoœæ
             currentMoveSpeed *= effect.Multiplier;
         }
@@ -64,12 +64,12 @@ public class Movement : MonoBehaviour
     {
         foreach (var modifier in temporarySpeedModifiers)
         {
-            // Zmniejszamy pozosta³y czas wszystkich aktywnych efektów
-            if(modifier.Value.Tick())
+            modifier.Value.RemainingDuration -= Time.deltaTime;
+            if(modifier.Value.RemainingDuration <=0)
             {
                 // Przy zdejmowaniu efektu dzielimy prêdkoœæ przez Multiplier,
                 // ¿eby wróciæ prêdkoœæ do wartoœæ przed na³o¿eniem efektu
-                currentMoveSpeed /= modifier.Value.Multiplier;
+                currentMoveSpeed /= modifier.Key.Multiplier;
                 // Usuwamy efekty któych pozosta³y czas doszed³ do 0 
                 // Nie mo¿na modyfikowaæ kolekcji (listy, s³ownika etc.) w foreach
                 // Dodajemy do listy obiektów do usuniêcia i usuwamy poni¿ej

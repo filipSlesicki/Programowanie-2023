@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootIfLookingAtPlayer : MonoBehaviour
+public class ShootIfLookingAtTarget : MonoBehaviour
 {
     [SerializeField] Shooting shooting;
     [SerializeField] LayerMask targetMask;
     [SerializeField] float radius = 1;
     [SerializeField] float coneAngle = 25;
-
-    // Start is called before the first frame update
-    void Start()
+    private string targetTag;
+    public void SetTargetTag(string tag)
     {
-
+        targetTag = tag;
     }
 
     // Update is called once per frame
@@ -24,12 +21,14 @@ public class ShootIfLookingAtPlayer : MonoBehaviour
 
         if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, 20, targetMask))
         {
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag(targetTag))
             {
-                Debug.Log("Player is in front");
-                shooting.Shoot();
+                Debug.Log("target is in front");
+                shooting.StartShooting();
+                return;
             }
         }
+        shooting.StopShooting();
 
         //Find closest object
         //Collider[] collsInRange = Physics.OverlapSphere(transform.position, radius, targetMask);

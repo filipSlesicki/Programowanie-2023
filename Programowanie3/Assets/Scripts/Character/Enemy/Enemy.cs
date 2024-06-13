@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int damage = 1;
     Movement movement;
 
+    public static List<Enemy> Enemies = new List<Enemy>();
     public static int EnemyCount;
 
     private void Start()
     {
+        Enemies.Add(this);
         EnemyCount++;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player != null )
@@ -48,5 +50,6 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         EnemyCount--;
+        Enemies.Remove(this);
     }
 }

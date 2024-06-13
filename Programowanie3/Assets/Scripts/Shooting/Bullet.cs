@@ -3,16 +3,30 @@ using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
-    private int damage = 1;
+    [SerializeField] private bool destroySelfOnHit = true;
+    [SerializeField] private bool alwaysMoveForward = false;
     [SerializeField] private UnityEvent onHit;
-
+    private int damage = 1;
+    private float speed;
+    private Rigidbody rb;
+  
     public void Launch(float speed, float range, int damage)
     {
         this.damage = damage;
-        Rigidbody rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        this.speed = speed;
         rb.velocity = transform.forward * speed;
         float lifetime = range / speed;
         Destroy(gameObject, lifetime);
+    }
+
+    private void FixedUpdate()
+    {
+        if(alwaysMoveForward)
+        {
+            // Update velocity to handle direction changes
+            rb.velocity = transform.forward * speed;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +36,10 @@ public class Bullet : MonoBehaviour
             health.TakeDamage(damage);
         }
         onHit?.Invoke();
-        Destroy(gameObject);
+
+        if(destroySelfOnHit)
+        {
+            Destroy(gameObject);
+        }
     }
 }

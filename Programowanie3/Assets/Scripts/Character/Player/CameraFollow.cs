@@ -5,13 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    Vector3 offset;
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Liczymy pocz¹tkow¹ odleg³oœæ od gracza
-        offset = player.position - transform.position;
-    }
+    public Vector3 offset;
 
     // Kamerê ruszamy w LateUpdate
     void LateUpdate()
@@ -22,5 +16,11 @@ public class CameraFollow : MonoBehaviour
         }
         //Ustawiamy kamerê w podanej odleg³oœci od gracza
         transform.position = player.position - offset;
+    }
+
+    [ContextMenu("Set offset")]
+    public void SetOffestToCurrent()
+    {
+        offset = player.position - transform.position;
     }
 }

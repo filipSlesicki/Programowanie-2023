@@ -21,38 +21,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            shooting.Shoot();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            shooting.ChangeWeapon(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            shooting.ChangeWeapon(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            shooting.ChangeWeapon(2);
-        }
-
-        if(Input.mouseScrollDelta.y > 0)
-        {
-            shooting.ChangeToNextWeapon();
-        }
-
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            shooting.ChangeToPreviousWeapon();
-        }
-
+        HandleWeaponChangeInput();
+        HandleShootInput();
         LookAtMouse();
-
     }
 
     private void FixedUpdate()
@@ -96,6 +67,62 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
         moveDirection = Vector3.ClampMagnitude(moveDirection, 1);
         return moveDirection;
+    }
+
+    private void HandleShootInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            shooting.StartShooting();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            shooting.StopShooting();
+        }
+    }
+
+    private void HandleWeaponChangeInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            shooting.ChangeWeapon(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            shooting.ChangeWeapon(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            shooting.ChangeWeapon(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            shooting.ChangeWeapon(3);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            shooting.ChangeWeapon(4);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            shooting.ChangeWeapon(5);
+        }
+
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            shooting.ChangeToNextWeapon();
+        }
+
+        if (Input.mouseScrollDelta.y < 0)
+        {
+            shooting.ChangeToPreviousWeapon();
+        }
     }
 
     private void LookAtMouse()
