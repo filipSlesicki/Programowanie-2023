@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] WeaponBulletSettings bulletSettings;
     [SerializeField] WeaponSpawnSettings spawnObjectSettings;
     [SerializeField] WeaponRaycastSettings raycastSettings;
+    [SerializeField] SubweaponSettings subweaponSettings;
     [Header("Shoot Events")]
     [SerializeField] private UnityEvent StartShootingEvent;
     [SerializeField] private UnityEvent StopShootingEvent;
@@ -56,7 +57,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         // TODO: Use inheritance instead
         switch (shootType)
@@ -101,6 +102,13 @@ public class Weapon : MonoBehaviour
                         health.TakeDamage(damage);
                         raycastSettings.HitObjectEvent?.Invoke(health.gameObject);
                     }
+                }
+                break;
+                break;
+            case ShootType.SubWeapons:
+                foreach(Weapon subweapon in subweaponSettings.weapons)
+                {
+                    subweapon.Shoot();
                 }
                 break;
             default:

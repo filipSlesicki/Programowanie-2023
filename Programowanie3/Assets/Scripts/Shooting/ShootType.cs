@@ -19,5 +19,7 @@ public enum ShootType
     /// <summary>
     /// Damage all targets in range (OverlapSphere)
     /// </summary>
-    AllInRange
+    AllInRange,
+
+    SubWeapons,
 }
