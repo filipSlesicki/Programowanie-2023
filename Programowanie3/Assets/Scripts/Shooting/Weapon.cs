@@ -79,7 +79,11 @@ public class Weapon : MonoBehaviour
                     raycastSettings.RayEndPoisitionEvent?.Invoke(hit.point);
                     raycastSettings.HitObjectEvent?.Invoke(hit.collider.gameObject);
                 }
-                raycastSettings.RayEndPoisitionEvent?.Invoke(shootPoint.position + shootDirection * range);
+                else
+                {
+                    raycastSettings.RayEndPoisitionEvent?.Invoke(shootPoint.position + shootDirection * range);
+                }
+                
                 break;
             case ShootType.AllInRange:
                 Collider[] collidersInRange = Physics.OverlapSphere(shootPoint.position, range);
