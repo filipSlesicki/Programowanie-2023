@@ -21,6 +21,7 @@ public class RotateToClosestTarget : MonoBehaviour
         }
     }
 
+
     public void FindClosestEnemy()
     {
         target = Enemy.Enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).FirstOrDefault()?.transform;

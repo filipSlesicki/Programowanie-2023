@@ -88,7 +88,8 @@ public class Weapon : MonoBehaviour
                     // Check if it's a valid target
                     if (collider.CompareTag(targetTag) && collider.TryGetComponent(out Health health))
                     {
-                        if(spread > 0 && Vector3.Angle(shootPoint.forward, collider.transform.position - shootPoint.position) > spread)
+                        Vector3 toTargetDirection = collider.transform.position - shootPoint.position;
+                        if (spread > 0 && Vector3.Angle(shootPoint.forward, toTargetDirection) > spread)
                         {
                             // if we use spread, only damage targets in cone of spread angle in front of weapon
                             continue;
