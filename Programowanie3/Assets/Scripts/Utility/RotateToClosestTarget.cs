@@ -4,16 +4,25 @@ using System.Linq;
 public class RotateToClosestTarget : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 90;
+    [SerializeField] private Team targetTeam = Team.Enemy;
     private Transform target;
 
     private void Start()
     {
-        FindClosestEnemy();    
+        if (targetTeam == Team.Enemy)
+        {
+            FindClosestEnemy();
+        }
+        else if (targetTeam == Team.Player)
+        {
+            target = FindObjectOfType<Player>()?.transform;
+        }
+
     }
 
     private void Update()
     {
-        if(target != null)
+        if (target != null)
         {
             Vector3 toTarget = target.position - transform.position;
             Quaternion targetRot = Quaternion.LookRotation(toTarget);
