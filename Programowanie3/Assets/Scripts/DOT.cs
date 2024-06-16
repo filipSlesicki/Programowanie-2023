@@ -2,23 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DOT : MonoBehaviour
+public class DOT : MonoBehaviour, IPoison
 {
-    [SerializeField] private float dmg;
-    private float dmgTimer;
+    [SerializeField] private float poisonTime;
+
+    public bool IsPosioned()
+    {
+        return true;
+    }
+
+    public void SetPosion(float addPoisonTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void WhilePoison()
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<Health>())
+        if (other.TryGetComponent<IPoison>(out IPoison p))
         {
-            if (dmgTimer < 1)
+            if (!p.IsPosioned())
             {
-                dmgTimer += Time.deltaTime * dmg;
-            }
-            else
-            {
-                dmgTimer = 0;
-                other.GetComponent<Health>().TakeDamage(1);
+                p.SetPosion(poisonTime);
             }
         }
     }

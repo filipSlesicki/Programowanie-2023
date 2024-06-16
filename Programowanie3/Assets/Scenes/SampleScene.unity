@@ -967,7 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fa1762c0be535469815233cd72865f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 3
+  poisonTime: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
