@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
                 case ShootType.Ray:
                     //Shoot ray
                     break;
+               
                 default:
                     break;
             }

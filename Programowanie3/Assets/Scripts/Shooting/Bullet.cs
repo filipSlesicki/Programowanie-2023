@@ -5,12 +5,20 @@ public class Bullet : MonoBehaviour
 {
     private int damage = 1;
     [SerializeField] private UnityEvent onHit;
+    [SerializeField] bool isCannon; 
 
     public void Launch(float speed, float range, int damage)
     {
         this.damage = damage;
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
+        if(isCannon)
+        {
+            rb.velocity = transform.forward * speed + transform.up * speed;
+        } 
+        else 
+        {
+            rb.velocity = transform.forward * speed;
+        }
         float lifetime = range / speed;
         Destroy(gameObject, lifetime);
     }
